@@ -1,5 +1,4 @@
 #include "GlobalScheduler.h"
-#include "MPU6500Driver.h"
 
 unsigned long int timerTK2=0, timerTK1=0, timerTK3=0;
 
