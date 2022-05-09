@@ -14,7 +14,7 @@ void MPU6500Driver_Init(){
   Serial.print(F("MPU6050 status: "));
   Serial.println(status);
   while(status!=0){ } // stop everything if could not connect to MPU6050
-                      // status 0 passed
+                       // status 0 passed
 
   Serial.println(F("Calculating offsets, do not move MPU6050"));
   delay(1000);
@@ -76,7 +76,7 @@ void MPU6500Driver_MainFunction(){
   MPU6500Driver_GetAngularAccelerationData(&accangleX, &accangleY);
 
   Serial.print("ACC: ");
-  Serial.print(accX);
+  Serial.print(accX);//-in spate    +in fata
   Serial.print(",");
   Serial.print(accY);
   Serial.print(",");
