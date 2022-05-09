@@ -98,6 +98,5 @@ void MPU6500Driver_MainFunction(){
   Serial.print(",");
   Serial.println(accangleY);
   Serial.println();
-
 }
 

@@ -26,6 +26,8 @@ void MainTaskScheduler(void){   //used in loop()
   {
     TK_2();
     timerTK2 = micros();
+     Serial.print(micros());
+  Serial.println();
   }
   if (micros() - timerTK3 > 1000)
   {
