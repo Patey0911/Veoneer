@@ -44,15 +44,37 @@ boolean MPU6500Driver_GetGyroData(float* gyrX, float* gyrY, float* gyrZ)
   return true;
 }
 
+boolean MPU6500Driver_GetAngleData(float* angleX, float* angleY, float* angleZ)
+{
+  mpu.update();
+  *angleX=mpu.getAngleX();
+  *angleY=mpu.getAngleY();
+  *angleZ=mpu.getAngleZ();
+  return true;
+}
+
+boolean MPU6500Driver_GetAngularAccelerationData(float* accangleX, float* accangleY)
+{
+  mpu.update();
+  *accangleX=mpu.getAccAngleX();
+  *accangleY=mpu.getAccAngleY();
+  return true;
+}
+
+
 void MPU6500Driver_MainFunction(){
 
 
   float accX, accY, accZ;
   float gyrX, gyrY, gyrZ;
+  float angleX, angleY, angleZ;
+  float accangleX, accangleY;
 
   MPU6500Driver_GetAccelerationData(&accX, &accY, &accZ);
   MPU6500Driver_GetGyroData(&gyrX, &gyrY, &gyrZ);
-  
+  MPU6500Driver_GetAngleData(&angleX, &angleY, &angleZ);
+  MPU6500Driver_GetAngularAccelerationData(&accangleX, &accangleY);
+
   Serial.print("ACC: ");
   Serial.print(accX);
   Serial.print(",");
@@ -65,5 +87,16 @@ void MPU6500Driver_MainFunction(){
   Serial.print(gyrY);
   Serial.print(",");
   Serial.println(gyrZ);
+  Serial.print("ANGLE: ");
+  Serial.print(angleX);
+  Serial.print(",");
+  Serial.print(angleY);
+  Serial.print(",");
+  Serial.println(angleZ);
+  Serial.print("ANGULAR ACC: ");
+  Serial.print(accangleX);
+  Serial.print(",");
+  Serial.println(accangleY);
+  Serial.println();
 }
 
