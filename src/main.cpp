@@ -2,7 +2,6 @@
 #include <GlobalScheduler.h>
 
 void setup() {
-  
   Serial.begin(9600);
   TK_INIT();
 }

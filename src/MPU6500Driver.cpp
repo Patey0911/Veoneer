@@ -28,7 +28,7 @@ boolean MPU6500Driver_GetAccelerationData(float* accX, float* accY, float* accZ)
 
   mpu.update();
 
-  *accX = mpu.getAccX();  //update in loop
+  *accX = mpu.getAccX();  //-back    +front
   *accY = mpu.getAccY();
   *accZ = mpu.getAccZ();
   return true;    
@@ -76,7 +76,7 @@ void MPU6500Driver_MainFunction(){
   MPU6500Driver_GetAngularAccelerationData(&accangleX, &accangleY);
 
   Serial.print("ACC: ");
-  Serial.print(accX);//-in spate    +in fata
+  Serial.print(accX);
   Serial.print(",");
   Serial.print(accY);
   Serial.print(",");
@@ -98,5 +98,6 @@ void MPU6500Driver_MainFunction(){
   Serial.print(",");
   Serial.println(accangleY);
   Serial.println();
+
 }
 
