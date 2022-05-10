@@ -4,6 +4,7 @@
 
 unsigned long int timerTK2=0, timerTK1=0, timerTK3=0;
 
+
 void TK_1(){
 
 }
@@ -18,16 +19,18 @@ void TK_INIT()
 }
 
 void TK_2(){
+  digitalWrite(A0,1);
     char *mesaj_crashtype=NULL;
     MPU6500Driver_MainFunction();
     CrashDetectionAlgorithm_GetCrashType(mesaj_crashtype);
     CrashReactionManager_MainFunction();
+  digitalWrite(A0,0);
 }
 
 void MainTaskScheduler(void){   //used in loop()
-
     if (micros() - timerTK2 > 500)
   {
+    
     TK_2();
     timerTK2 = micros();
   }
