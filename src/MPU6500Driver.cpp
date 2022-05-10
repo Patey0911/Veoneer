@@ -4,7 +4,10 @@
 MPU6050 mpu(Wire);
 
 unsigned long timer = 0;
-
+float accX, accY, accZ;
+float gyrX, gyrY, gyrZ;
+float angleX, angleY, angleZ;
+float accangleX, accangleY;
 
 void MPU6500Driver_Init(){
 
@@ -59,12 +62,6 @@ boolean MPU6500Driver_GetAngularAccelerationData(float* accangleX, float* accang
 
 
 void MPU6500Driver_MainFunction(){
-
-
-  float accX, accY, accZ;
-  float gyrX, gyrY, gyrZ;
-  float angleX, angleY, angleZ;
-  float accangleX, accangleY;
 
   MPU6500Driver_GetAccelerationData(&accX, &accY, &accZ);
   MPU6500Driver_GetGyroData(&gyrX, &gyrY, &gyrZ);

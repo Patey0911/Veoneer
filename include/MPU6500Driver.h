@@ -1,6 +1,10 @@
 #include <MPU6050_light.h>
 
 extern unsigned long timer;
+extern float accX, accY, accZ;
+extern float gyrX, gyrY, gyrZ;
+extern float angleX, angleY, angleZ;
+extern float accangleX, accangleY;
 
 void MPU6500Driver_Init();
 
