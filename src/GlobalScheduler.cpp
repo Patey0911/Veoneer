@@ -18,9 +18,10 @@ void TK_INIT(){     //used in setup()
 }
 
 void TK_2(){
-
+    char *mesaj_crashtype=NULL;
     MPU6500Driver_MainFunction();
-    CrashDetectionAlgorithm_MainFunction();
+    CrashDetectionAlgorithm_GetCrashType(mesaj_crashtype);
+    CrashReactionManager_MainFunction();
 }
 
 void MainTaskScheduler(void){   //used in loop()
