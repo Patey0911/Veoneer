@@ -9,8 +9,8 @@ float gyrX, gyrY, gyrZ;
 float angleX, angleY, angleZ;
 float accangleX, accangleY;
 
-void MPU6500Driver_Init(){
-
+void MPU6500Driver_Init()
+{
   Wire.begin();
   
   byte status = mpu.begin();
@@ -61,8 +61,8 @@ boolean MPU6500Driver_GetAngularAccelerationData(float* accangleX, float* accang
 }
 
 
-void MPU6500Driver_MainFunction(){
-
+void MPU6500Driver_MainFunction()
+{
   MPU6500Driver_GetAccelerationData(&accX, &accY, &accZ);
   MPU6500Driver_GetGyroData(&gyrX, &gyrY, &gyrZ);
   MPU6500Driver_GetAngleData(&angleX, &angleY, &angleZ);
@@ -91,6 +91,5 @@ void MPU6500Driver_MainFunction(){
   Serial.print(",");
   Serial.println(accangleY);
   Serial.println();
-  
 }
 

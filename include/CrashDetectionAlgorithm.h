@@ -9,7 +9,7 @@ void CrashDetectionAlgorithm_Init();
 
 void CrashDetectionAlgorithm_GetCrashType(char *);
 
-void CrashDetectionAlgorithm_GetCrashSeverity(unsigned char *);
+void CrashDetectionAlgorithm_GetCrashSeverity(char *);
 
 void CrashDetectionAlgorithm_MainFunction();
 

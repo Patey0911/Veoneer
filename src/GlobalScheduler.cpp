@@ -12,8 +12,8 @@ void TK_3(){
 
 }
 
-void TK_INIT(){     //used in setup()
-
+void TK_INIT()
+{     //used in setup()
     MPU6500Driver_Init();
 }
 
