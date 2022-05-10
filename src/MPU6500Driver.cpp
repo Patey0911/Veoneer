@@ -29,8 +29,8 @@ boolean MPU6500Driver_GetAccelerationData(float* accX, float* accY, float* accZ)
 {
   mpu.update();
   *accX = mpu.getAccX();  //-back    +front
-  *accY = mpu.getAccY();
-  *accZ = mpu.getAccZ();
+  *accY = mpu.getAccY();  //-right   +left
+  *accZ = mpu.getAccZ();  //-down    +up
   return true;    
 }
 
