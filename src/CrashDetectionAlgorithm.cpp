@@ -13,7 +13,6 @@ void CrashDetectionAlgorithm_GetCrashType(char *mesaj_crashtype)
         k=1;
         const char mes[15]="BACK CRASH";
         strcpy(mesaj_crashtype,mes);
-        Serial.println(mesaj_crashtype);
         //EEPROM.write(1,1);
     }
     else if(accX>0.5)
@@ -21,7 +20,6 @@ void CrashDetectionAlgorithm_GetCrashType(char *mesaj_crashtype)
         k=1;
         const char mes[15]="FRONT CRASH";
         strcpy(mesaj_crashtype,mes);
-        Serial.println(mesaj_crashtype);
         //EEPROM.write(1,2);
     }   
     if(accY>0.5)
@@ -29,7 +27,6 @@ void CrashDetectionAlgorithm_GetCrashType(char *mesaj_crashtype)
         k=1;
         const char mes[15]="LEFT CRASH";
         strcpy(mesaj_crashtype,mes);
-        Serial.println(mesaj_crashtype);
         //EEPROM.write(1,3);
     }
     else if(accY<(-0.5))
@@ -37,11 +34,11 @@ void CrashDetectionAlgorithm_GetCrashType(char *mesaj_crashtype)
         k=1;
         const char mes[15]="RIGHT CRASH";
         strcpy(mesaj_crashtype,mes);
-        Serial.println(mesaj_crashtype);
         //EEPROM.write(1,4);
     }
     if(k==1)
     {
+        Serial.println(mesaj_crashtype);
         delay(10000);
     }
     /*cod=EEPROM.read(1);
