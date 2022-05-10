@@ -68,6 +68,7 @@ void MPU6500Driver_MainFunction()
   MPU6500Driver_GetAngleData(&angleX, &angleY, &angleZ);
   MPU6500Driver_GetAngularAccelerationData(&accangleX, &accangleY);
 
+
   Serial.print("ACC: ");
   Serial.print(accX);
   Serial.print(",");
@@ -91,5 +92,6 @@ void MPU6500Driver_MainFunction()
   Serial.print(",");
   Serial.println(accangleY);
   Serial.println();
+  
 }
 
