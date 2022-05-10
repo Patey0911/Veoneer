@@ -26,17 +26,17 @@ void MainTaskScheduler(void){   //used in loop()
   {
     TK_2();
     timerTK2 = micros();
-     Serial.print(micros());
-  Serial.println();
   }
   if (micros() - timerTK3 > 1000)
   {
     TK_3();
     timerTK3 = micros();
+    Serial.println("TK_3");
   }
   if (micros() - timerTK1 > 5000)
   {
     TK_1();
     timerTK1 = micros();
+    Serial.println("TK_2");
   }
 }
