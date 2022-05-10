@@ -20,19 +20,15 @@ void MPU6500Driver_Init(){
   delay(1000);
   mpu.calcOffsets(true,true); // gyro and accelero
   Serial.println("Done!\n");
-
 }
 
 boolean MPU6500Driver_GetAccelerationData(float* accX, float* accY, float* accZ)
 {
-
   mpu.update();
-
   *accX = mpu.getAccX();  //-back    +front
   *accY = mpu.getAccY();
   *accZ = mpu.getAccZ();
   return true;    
-
 }
 
 boolean MPU6500Driver_GetGyroData(float* gyrX, float* gyrY, float* gyrZ)

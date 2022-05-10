@@ -1,4 +1,6 @@
 #include "GlobalScheduler.h"
+#include "CrashDetectionAlgorithm.h"
+#include "CrashReactionManager.h"
 
 unsigned long int timerTK2=0, timerTK1=0, timerTK3=0;
 
@@ -18,6 +20,7 @@ void TK_INIT(){     //used in setup()
 void TK_2(){
 
     MPU6500Driver_MainFunction();
+    CrashDetectionAlgorithm_MainFunction();
 }
 
 void MainTaskScheduler(void){   //used in loop()
