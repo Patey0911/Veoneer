@@ -1,10 +1,5 @@
 #include <MPU6050_light.h>
 
-/*float accX, accY, accZ;
-float gyrX, gyrY, gyrZ;
-float angleX, angleY, angleZ;
-float accangleX, accangleY;*/
-
 void MPU6500Driver_Init();
 
 void MPU6500Driver_MainFunction();
@@ -24,9 +19,4 @@ boolean MPU6500Driver_GetAngularAccelerationData(float*, float*);
 float return_accx();
 
 float return_accy();
-
-
-
-
-
 

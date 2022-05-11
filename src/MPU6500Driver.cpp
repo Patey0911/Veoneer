@@ -71,10 +71,7 @@ float return_accy()
 
 void MPU6500Driver_MainFunction()
 {
-  /*float accX, accY, accZ;
-float gyrX, gyrY, gyrZ;
-float angleX, angleY, angleZ;
-float accangleX, accangleY;*/
+  
   MPU6500Driver_GetAccelerationData(&accX, &accY, &accZ);
   MPU6500Driver_GetGyroData(&gyrX, &gyrY, &gyrZ);
   MPU6500Driver_GetAngleData(&angleX, &angleY, &angleZ);
@@ -104,6 +101,7 @@ float accangleX, accangleY;*/
   Serial.print(",");
   Serial.println(accangleY);
   Serial.println();
+  
  
 }
 
