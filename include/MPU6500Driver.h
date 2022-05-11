@@ -1,10 +1,9 @@
 #include <MPU6050_light.h>
 
-extern unsigned long timer;
-extern float accX, accY, accZ;
-extern float gyrX, gyrY, gyrZ;
-extern float angleX, angleY, angleZ;
-extern float accangleX, accangleY;
+/*float accX, accY, accZ;
+float gyrX, gyrY, gyrZ;
+float angleX, angleY, angleZ;
+float accangleX, accangleY;*/
 
 void MPU6500Driver_Init();
 
@@ -21,6 +20,10 @@ boolean MPU6500Driver_GetAngleData(float*, float*, float*);
 boolean MPU6500Driver_IsProveoutComplete();
 
 boolean MPU6500Driver_GetAngularAccelerationData(float*, float*);
+
+float return_accx();
+
+float return_accy();
 
 
 
