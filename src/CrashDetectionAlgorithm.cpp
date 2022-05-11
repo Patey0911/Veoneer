@@ -4,7 +4,6 @@ void CrashDetectionAlgorithm_Init();
 
 void CrashDetectionAlgorithm_GetCrashType(char *mesaj_crashtype)
 {
-    float x;
     //int cod;
     mesaj_crashtype=(char*)malloc(20*sizeof(char));
     //EEPROM.write(1,0);
