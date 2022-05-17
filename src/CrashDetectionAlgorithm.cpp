@@ -8,28 +8,28 @@ void CrashDetectionAlgorithm_GetCrashType(char *mesaj_crashtype)
     mesaj_crashtype=(char*)malloc(20*sizeof(char));
     //EEPROM.write(1,0);
     int k=0;
-    if(return_accx()<(-0.5))
+    if(return_accx()<(-1))
     {
         k=1;
         const char mes[15]="BACK CRASH";
         strcpy(mesaj_crashtype,mes);
         //EEPROM.write(1,1);
     }
-    else if(return_accx()>0.5)
+    else if(return_accx()>1)
     {
         k=1;
         const char mes[15]="FRONT CRASH";
         strcpy(mesaj_crashtype,mes);
         //EEPROM.write(1,2);
     }   
-    if(return_accy()>0.5)
+    if(return_accy()>1)
     {
         k=1;
         const char mes[15]="LEFT CRASH";
         strcpy(mesaj_crashtype,mes);
         //EEPROM.write(1,3);
     }
-    else if(return_accy()<(-0.5))
+    else if(return_accy()<(-1))
     {
         k=1;
         const char mes[15]="RIGHT CRASH";
