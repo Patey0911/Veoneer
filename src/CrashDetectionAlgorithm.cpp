@@ -1,55 +1,51 @@
 #include "CrashDetectionAlgorithm.h"
 #include "EEPROM.h"
+
 void CrashDetectionAlgorithm_Init();
 
 void CrashDetectionAlgorithm_GetCrashType(char *mesaj_crashtype)
 {
+
+}
+
+void CrashDetectionAlgorithm_GetCrashSeverity(char *mesaj_severity)
+{
+
+    //0.7 low
+    //1 high
+}
+
+void CrashDetectionAlgorithm_MainFunction()
+{
     //int cod;
-    mesaj_crashtype=(char*)malloc(20*sizeof(char));
-    //EEPROM.write(1,0);
+    char *mesaj;
+    mesaj=(char*)malloc(20*sizeof(char));
     int k=0;
-    if(return_accx()<(-1))
+    if(return_accx()>0.7)
     {
         k=1;
-        const char mes[15]="BACK CRASH";
-        strcpy(mesaj_crashtype,mes);
-        //EEPROM.write(1,1);
+        const char mes[8]="FRONT";
+        strcpy(mesaj,mes);
+    } 
+    if(return_accy()>0.7)
+    {
+        k=1;
+        const char mes[8]="LEFT";
+        strcpy(mesaj,mes);
     }
-    else if(return_accx()>1)
+    else if(return_accy()<(-0.7))
     {
         k=1;
-        const char mes[15]="FRONT CRASH";
-        strcpy(mesaj_crashtype,mes);
-        //EEPROM.write(1,2);
-    }   
-    if(return_accy()>1)
-    {
-        k=1;
-        const char mes[15]="LEFT CRASH";
-        strcpy(mesaj_crashtype,mes);
-        //EEPROM.write(1,3);
-    }
-    else if(return_accy()<(-1))
-    {
-        k=1;
-        const char mes[15]="RIGHT CRASH";
-        strcpy(mesaj_crashtype,mes);
-        //EEPROM.write(1,4);
+        const char mes[8]="RIGHT";
+        strcpy(mesaj,mes);
     }
     if(k==1)
     {
-        Serial.println(mesaj_crashtype);
+        if(return_accx()>1||return_accy()<(-1)||return_accy()>1)
+        {
+            
+        }
+        Serial.println(mesaj);
         delay(10000);
     }
-    /*cod=EEPROM.read(1);
-    if(cod>0)
-    {
-    Serial.println(cod);
-    delay(10000);
-    }
-    */
 }
-
-void CrashDetectionAlgorithm_GetCrashSeverity(unsigned char *);
-
-void CrashDetectionAlgorithm_MainFunction();
