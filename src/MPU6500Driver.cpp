@@ -24,60 +24,56 @@ void MPU6500Driver_Init()
   Serial.println("Done!\n");
 }
 
-boolean MPU6500Driver_GetAccelerationData(float* accX, float* accY, float* accZ)
+boolean MPU6500Driver_GetAccelerationData(float* accX_p, float* accY_p, float* accZ_p)
 {
-  mpu.update();
-  *accX = mpu.getAccX();  //-back    +front
-  *accY = mpu.getAccY();  //-right   +left
-  *accZ = mpu.getAccZ();  //-down    +up
+  *accX_p=accX;
+  *accY_p=accY;
+  *accZ_p=accZ;
   return true;    
 }
 
-boolean MPU6500Driver_GetGyroData(float* gyrX, float* gyrY, float* gyrZ)
+boolean MPU6500Driver_GetGyroData(float* gyrX_p, float* gyrY_p, float* gyrZ_p)
 {
-  mpu.update();
-  *gyrX = mpu.getGyroX();
-  *gyrY = mpu.getGyroY();
-  *gyrZ = mpu.getGyroZ();
+  *gyrX_p=gyrX;
+  *gyrY_p=gyrY;
+  *gyrZ_p=gyrZ;
   return true;
 }
 
-boolean MPU6500Driver_GetAngleData(float* angleX, float* angleY, float* angleZ)
+boolean MPU6500Driver_GetAngleData(float* angleX_p, float* angleY_p, float* angleZ_p)
 {
-  mpu.update();
-  *angleX=mpu.getAngleX();
-  *angleY=mpu.getAngleY();
-  *angleZ=mpu.getAngleZ();
+  *angleX_p=angleX;
+  *angleY_p=angleY;
+  *angleZ_p=angleZ;
   return true;
 }
 
-boolean MPU6500Driver_GetAngularAccelerationData(float* accangleX, float* accangleY)
+boolean MPU6500Driver_GetAngularAccelerationData(float* accangleX_p, float* accangleY_p)
 {
-  mpu.update();
-  *accangleX=mpu.getAccAngleX();
-  *accangleY=mpu.getAccAngleY();
+  *accangleX_p=accangleX;
+  *accangleY_p=accangleY;
   return true;
-}
-
-float return_accx()
-{
-  return accX;
-}
-
-float return_accy()
-{
-  return accY;
 }
 
 void MPU6500Driver_MainFunction()
 {
-  
-  MPU6500Driver_GetAccelerationData(&accX, &accY, &accZ);
-  MPU6500Driver_GetGyroData(&gyrX, &gyrY, &gyrZ);
-  MPU6500Driver_GetAngleData(&angleX, &angleY, &angleZ);
-  MPU6500Driver_GetAngularAccelerationData(&accangleX, &accangleY);
+  mpu.update();
+  accX = mpu.getAccX();  //-back    +front
+  accY = mpu.getAccY();  //-right   +left
+  accZ = mpu.getAccZ();  //-down    +up
 
+  gyrX = mpu.getGyroX();
+  gyrY = mpu.getGyroY();
+  gyrZ = mpu.getGyroZ();
 
+  angleX=mpu.getAngleX();
+  angleY=mpu.getAngleY();
+  angleZ=mpu.getAngleZ();
+
+  accangleX=mpu.getAccAngleX();
+  accangleY=mpu.getAccAngleY();
+
+/*
   Serial.print("ACC: ");
   Serial.print(accX);
   Serial.print(",");
@@ -101,7 +97,6 @@ void MPU6500Driver_MainFunction()
   Serial.print(",");
   Serial.println(accangleY);
   Serial.println();
-  
- 
+  */
 }
 

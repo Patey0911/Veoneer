@@ -1,51 +1,87 @@
 #include "CrashDetectionAlgorithm.h"
-#include "EEPROM.h"
+#include "MPU6500Driver.h"
 
-void CrashDetectionAlgorithm_Init();
+float accX_crash, accY_crash, accZ_crash;
+unsigned char* crash_type=NULL;
+unsigned char* crash_severity=NULL;
 
-void CrashDetectionAlgorithm_GetCrashType(char *mesaj_crashtype)
+void CrashDetectionAlgorithm_Init()
 {
 
 }
 
-void CrashDetectionAlgorithm_GetCrashSeverity(char *mesaj_severity)
-{
-
-    //0.7 low
-    //1 high
-}
 
 void CrashDetectionAlgorithm_MainFunction()
 {
-    //int cod;
-    char *mesaj;
-    mesaj=(char*)malloc(20*sizeof(char));
-    int k=0;
-    if(return_accx()>0.7)
+    MPU6500Driver_GetAccelerationData(&accX_crash, &accY_crash, &accZ_crash);
+    if(accX_crash>0.7)
     {
-        k=1;
-        const char mes[8]="FRONT";
-        strcpy(mesaj,mes);
-    } 
-    if(return_accy()>0.7)
-    {
-        k=1;
-        const char mes[8]="LEFT";
-        strcpy(mesaj,mes);
-    }
-    else if(return_accy()<(-0.7))
-    {
-        k=1;
-        const char mes[8]="RIGHT";
-        strcpy(mesaj,mes);
-    }
-    if(k==1)
-    {
-        if(return_accx()>1||return_accy()<(-1)||return_accy()>1)
+        crash_type=(unsigned char*)malloc(sizeof(12));
+        if(!crash_type)
         {
-            
+            Serial.println("ERROR!");
         }
-        Serial.println(mesaj);
-        delay(10000);
+        else
+        {
+            memcpy(crash_type,"FRONT CRASH",12);
+        }
+    }
+    if(accY_crash>0.7)
+    {
+        crash_type=(unsigned char*)malloc(sizeof(12));
+        if(!crash_type)
+        {
+            Serial.println("ERROR!");
+        }
+        else
+        {
+            memcpy(crash_type,"RIGHT CRASH",12);
+        }
+    }
+    else if(accY_crash<(-0.7))
+    {
+        crash_type=(unsigned char*)malloc(sizeof(11));
+        if(!crash_type)
+        {
+            Serial.println("ERROR!");
+        }
+        else
+        {
+            memcpy(crash_type,"LEFT CRASH",11);
+        }
+    }
+    if(accX_crash>1||accY_crash>1||accY_crash<(-1))
+    {
+        crash_severity=(unsigned char*)malloc(sizeof(11));
+        if(!crash_severity)
+        {
+            Serial.println("ERROR!");
+        }
+        else
+        {
+            memcpy(crash_severity,"HIGH CRASH",11);
+        }
+    }
+    else if(accX_crash>0.7||accY_crash>0.7||accY_crash<(-0.7))
+    {
+        crash_severity=(unsigned char*)malloc(sizeof(10));
+        if(!crash_severity)
+        {
+            Serial.println("ERROR!");
+        }
+        else{
+            memcpy(crash_severity,"LOW CRASH",10);
+        }
     }
 }
+
+void CrashDetectionAlgorithm_GetCrashType(unsigned char* crash_type_p)
+{
+    crash_type_p=crash_type;
+}
+
+void CrashDetectionAlgorithm_GetCrashSeverity(unsigned char *crash_severity_p)
+{
+    crash_severity_p=crash_severity;
+}
+

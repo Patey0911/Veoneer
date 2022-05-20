@@ -1,9 +1,8 @@
 #include "GlobalScheduler.h"
+#include "MPU6500Driver.h"
 #include "CrashDetectionAlgorithm.h"
-#include "CrashReactionManager.h"
 
-unsigned long int timerTK2=0, timerTK1=0, timerTK3=0;
-
+unsigned long int timerTK2 = 0, timerTK1 = 0, timerTK3 = 0; //order of priorities
 
 void TK_1(){
 
@@ -13,33 +12,37 @@ void TK_3(){
 
 }
 
-void TK_INIT()
-{     //used in setup()
+void TK_INIT(){     //used in setup()
+
     MPU6500Driver_Init();
 }
 
 void TK_2(){
-  digitalWrite(A0,1);
-    char *mesaj_crashtype=NULL;
+
+    //digitalWrite(A0, 1);  //digitalWrite for saleae
     MPU6500Driver_MainFunction();
-    CrashDetectionAlgorithm_GetCrashType(mesaj_crashtype);
-    CrashReactionManager_MainFunction();
-  digitalWrite(A0,0);
+    //digitalWrite(A0, 0);
+    CrashDetectionAlgorithm_MainFunction();
+
 }
 
 void MainTaskScheduler(void){   //used in loop()
-    if (micros() - timerTK2 > 500)
-  {
+
     
+  if (micros() - timerTK2 > 500)
+  {
     TK_2();
     timerTK2 = micros();
+    //Serial.println("TK_2");
   }
+
   if (micros() - timerTK3 > 1000)
   {
     TK_3();
     timerTK3 = micros();
     //Serial.println("TK_3");
   }
+
   if (micros() - timerTK1 > 5000)
   {
     TK_1();

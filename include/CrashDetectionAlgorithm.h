@@ -4,12 +4,13 @@
 #include<MPU6500Driver.h>
 #include<SystemStateManager.h>
 #include<CrashReactionManager.h>
+#include<math.h>
 
 void CrashDetectionAlgorithm_Init();
 
-void CrashDetectionAlgorithm_GetCrashType(char *);
+void CrashDetectionAlgorithm_GetCrashType(unsigned char *);
 
-void CrashDetectionAlgorithm_GetCrashSeverity(char *);
+void CrashDetectionAlgorithm_GetCrashSeverity(unsigned char *);
 
 void CrashDetectionAlgorithm_MainFunction();
 
