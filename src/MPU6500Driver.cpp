@@ -55,6 +55,11 @@ boolean MPU6500Driver_GetAngularAccelerationData(float* accangleX_p, float* acca
   return true;
 }
 
+void Just_Update()
+{
+   mpu.update();
+}
+
 void MPU6500Driver_MainFunction()
 {
   mpu.update();

@@ -20,3 +20,5 @@ float return_accx();
 
 float return_accy();
 
+void Just_Update();
+

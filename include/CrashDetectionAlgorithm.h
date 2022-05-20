@@ -6,6 +6,8 @@
 #include<CrashReactionManager.h>
 #include<math.h>
 
+bool returnSTATUS();
+
 void CrashDetectionAlgorithm_Init();
 
 void CrashDetectionAlgorithm_GetCrashType(unsigned char *);

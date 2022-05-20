@@ -1,5 +1,6 @@
 #pragma once
 #include "MPU6500Driver.h"
+#include "CrashDataRecorder.h"
 
 void TK_INIT();
 
