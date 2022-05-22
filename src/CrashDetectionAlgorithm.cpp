@@ -5,24 +5,25 @@ float accX_crash, accY_crash, accZ_crash;
 unsigned char* crash_type=NULL;
 unsigned char* crash_severity=NULL;
 unsigned long int timp1=0,timp2=0;
-bool ISCRASH=false;
+int ISCRASH=0;
 
 void CrashDetectionAlgorithm_Init()
 {
     crash_severity=NULL;
     crash_type=NULL;
-    ISCRASH=false;
+    ISCRASH=0;
 }
 
 
 void CrashDetectionAlgorithm_MainFunction()
 {
-    ISCRASH=false;
+    ISCRASH=0;
     unsigned long int k = 0;
     MPU6500Driver_GetAccelerationData(&accX_crash, &accY_crash, &accZ_crash);
+    //Serial.println(accX_crash);
     if(millis()-timp1>10000)
     {
-    if(accX_crash>0.9)
+    if(accX_crash>0.6)
     {
         timp1=millis();
         crash_type=(unsigned char*)malloc(12);
@@ -96,7 +97,7 @@ void CrashDetectionAlgorithm_MainFunction()
     
     if(k==1)
     {
-        ISCRASH=true;
+        ISCRASH=1;
         Serial.println((char*)crash_type);
         Serial.println((char*)crash_severity);
         Serial.println();
@@ -113,7 +114,7 @@ void CrashDetectionAlgorithm_GetCrashSeverity(unsigned char *crash_severity_p)
     crash_severity_p=crash_severity;
 }
 
-bool returnSTATUS()
+int returnSTATUS()
 {
     return ISCRASH;
 }

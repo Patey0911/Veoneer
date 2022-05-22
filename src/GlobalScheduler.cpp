@@ -24,8 +24,8 @@ void TK_2()
 
 void TK_3()
 {
-  SystemStateManager_GetSystemState(state);
-  CrashDataRecorder_MainFunction();
+   SystemStateManager_MainFunction();
+  //CrashDataRecorder_MainFunction();
   //NvmManager_MainFunction();
 }
 

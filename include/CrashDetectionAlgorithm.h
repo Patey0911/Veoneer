@@ -6,7 +6,7 @@
 #include<CrashReactionManager.h>
 #include<math.h>
 
-bool returnSTATUS();
+int returnSTATUS();
 
 void CrashDetectionAlgorithm_Init();
 

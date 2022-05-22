@@ -1,27 +1,29 @@
 #include "SystemStateManager.h"
-char *actual_state=NULL;
+char *actual_state=(char*)malloc(1);
 void SystemStateManager_init()
 {
-    actual_state=(char*)malloc(15);
-    strcpy(actual_state,"0");
+    memcpy(actual_state,"0",1);
+    //Serial.println(actual_state);
 }
 
 void SystemStateManager_GetSystemState(char *actual_state_p)
 {
-    SystemStateManager_MainFunction();
-  //actual_state_p=actual_state;
-  if(strcmp(actual_state_p,"1"))
+    memcpy(actual_state_p,actual_state,1);
+    Serial.println(*actual_state_p);
+    if(strcmp(actual_state_p,"1")==1)
     {
         Serial.println(*actual_state_p);
+        delay(5000);
     }
 }
 
 void SystemStateManager_MainFunction()
-{ 
-    if(returnSTATUS()==true)
+{   
+    if(returnSTATUS()==1)
     {
-        actual_state=(char*)malloc(sizeof(1));
         memcpy(actual_state,"1",1);
     }
     SystemStateManager_GetSystemState(actual_state);
+    memcpy(actual_state,"1",0);
+   // Serial.println("da");
 }
