@@ -11,7 +11,7 @@ unsigned long int timer = 0;
 
 void CrashDataRecorder_MainFunction(){
 
-    float valoare;
+    /*float valoare;
     int i;
     int cnt=1, cnt_write=0;
     if(returnSTATUS()==false)
@@ -111,4 +111,5 @@ void CrashDataRecorder_MainFunction(){
             }
         }
     }
+    */
 }

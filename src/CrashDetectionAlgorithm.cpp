@@ -9,7 +9,9 @@ bool ISCRASH=false;
 
 void CrashDetectionAlgorithm_Init()
 {
-
+    crash_severity=NULL;
+    crash_type=NULL;
+    ISCRASH=false;
 }
 
 

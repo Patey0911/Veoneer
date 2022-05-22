@@ -1,21 +1,18 @@
 #include "GlobalScheduler.h"
-#include "MPU6500Driver.h"
-#include "CrashDetectionAlgorithm.h"
-#include "CrashReactionManager.h"
 
 unsigned long int timerTK2 = 0, timerTK1 = 0, timerTK3 = 0; //order of priorities
-
-void TK_1(){
-
-}
-
-void TK_3(){
-
-}
+char*state=NULL;
 
 void TK_INIT()
 {     //used in setup()
     MPU6500Driver_Init();
+    SystemStateManager_init();
+    CrashDetectionAlgorithm_Init();
+}
+
+void TK_1()
+{
+
 }
 
 void TK_2()
@@ -23,7 +20,13 @@ void TK_2()
     MPU6500Driver_MainFunction();
     CrashDetectionAlgorithm_MainFunction();
     CrashReactionManager_MainFunction();
-    CrashDataRecorder_MainFunction();
+}
+
+void TK_3()
+{
+  SystemStateManager_GetSystemState(state);
+  CrashDataRecorder_MainFunction();
+  //NvmManager_MainFunction();
 }
 
 void MainTaskScheduler(void){   //used in loop()
