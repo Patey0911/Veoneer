@@ -16,3 +16,4 @@ void CrashDetectionAlgorithm_GetCrashSeverity(unsigned char *);
 
 void CrashDetectionAlgorithm_MainFunction();
 
+void setSTATUS();

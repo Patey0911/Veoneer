@@ -17,7 +17,6 @@ void CrashDetectionAlgorithm_Init()
 
 void CrashDetectionAlgorithm_MainFunction()
 {
-    ISCRASH=0;
     unsigned long int k = 0;
     MPU6500Driver_GetAccelerationData(&accX_crash, &accY_crash, &accZ_crash);
     //Serial.println(accX_crash);
@@ -117,4 +116,9 @@ void CrashDetectionAlgorithm_GetCrashSeverity(unsigned char *crash_severity_p)
 int returnSTATUS()
 {
     return ISCRASH;
+}
+
+void setSTATUS()
+{
+    ISCRASH=0;
 }

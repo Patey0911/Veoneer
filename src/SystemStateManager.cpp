@@ -25,5 +25,6 @@ void SystemStateManager_MainFunction()
     }
     SystemStateManager_GetSystemState(actual_state);
     memcpy(actual_state,"1",0);
+    setSTATUS();
    // Serial.println("da");
 }
