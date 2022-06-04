@@ -1,48 +1,82 @@
-#include<GSMDriver.h>
+#include <SoftwareSerial.h>
+#include <Arduino.h>
+#include "GsmDriver.h"
+#include "CrashDetectionAlgorithm.h"
+#include <string.h>
 
-//#define RX 25
-//#define TX 27
-/*
-GSMSim gsm(0,1);
+#define GSM_RX  2  
+#define GSM_TX  3 
+int nr;
+SoftwareSerial sim(GSM_RX, GSM_TX);  //
 
-void GsmDriver_Init()
+
+String number = "+40725661830"; 
+//String number = "+40765597414"; 
+String SMS = "";
+
+String convertToString(unsigned char* a, int size)
 {
-      Serial.begin(9600);
+    int i;
+    String s = "";
+    for (i = 0; i < size; i++) {
+        s = s + a[i];
+    }
+    return s;
+}
 
-  Serial.println("GSMSim Library - SMS Example");
-  Serial.println("");
+void GsmDriver_Init() {
+ 
+  Serial.println("System Started...");
+  sim.begin(115200);
   delay(1000);
-
-  gsm.start(); // baud default 9600
-  //gsm.start(BAUD);
-}
-
-bool GsmDriver_TriggerSmsTransmission();
-
-void GsmDriver_SetSmsData()
-{
-  /*
-    Serial.println("Changing to text mode.");
-  gsm.smsTextMode(true); // TEXT or PDU mode. TEXT is readable :)
-
-  char* number = "+40725661830";
-  char* message = "Hi my friend. How are you?"; // message lenght must be <= 160. Only english characters.
-
-  Serial.println("Sending Message --->");
-  Serial.println(gsm.smsSend(number, message)); // if success it returns true (1) else false (0)
-  delay(2000);
-  */
- /*
-
-  Serial.println("Listing unread message(s).");
-  Serial.println(gsm.smsListUnread()); // if not unread messages have it returns "NO_SMS"
-
-  Serial.println("Read SMS on index no = 1");
-  Serial.println(gsm.smsRead(1)); // if no message in that index, it returns IXDEX_NO_ERROR
   
+ Serial.println("Communicating GSM/GPS.....");
+
+    delay(1000);
+    Serial.println("SMS set ready");   
 }
 
-void GsmDriver_MainFunction();
+void GsmDriver_SetSmsData(String sms_text){
 
-bool GsmDriver_IsProveoutComplete();
-*/
+    SMS = sms_text;
+}
+
+void GsmDriver_TriggerSmsTransmission()
+{
+  Serial.println ("Sending Message");
+  sim.println("AT+CMGF=1");
+  Serial.println ("Set SMS Number");
+  sim.println("AT+CMGS=\"" + number + "\"\r"); 
+
+  
+  String crashtype_string, crashseverity_string;
+  unsigned char* crash_type_gsm = CrashDetectionAlgorithm_GetCrashType(crash_type_gsm);
+  unsigned char* crash_severity_gsm = CrashDetectionAlgorithm_GetCrashSeverity(crash_severity_gsm);  
+
+  for(int i = 0; i < 12; i++){
+
+    crashtype_string = crashtype_string + String(char(crash_type_gsm[i]));
+    crashseverity_string = crashseverity_string + String(char(crash_severity_gsm[i]));
+
+  }
+
+  String sms_data = crashtype_string + "\n" + crashseverity_string;
+
+  GsmDriver_SetSmsData(sms_data);
+
+
+   nr=sim.println(SMS);
+   Serial.println (nr);
+
+  sim.println((char)26);// ASCII code of CTRL+Z
+   
+}
+
+
+   
+ 
+void GsmDriver_MainFunction(){
+
+    GsmDriver_TriggerSmsTransmission();
+
+}

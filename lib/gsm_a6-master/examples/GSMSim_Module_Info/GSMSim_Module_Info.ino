@@ -1,13 +1,13 @@
 #include <gsm_a6.h>
 #include <SoftwareSerial.h>
 
-#define RX 7
-#define TX 8
+#define RX 2
+#define TX 3
 #define RESET 2
 #define BAUD 9600
 
 
-GSMSim gsm(RX, TX, RESET);
+GSMSim gsm(RX, TX);
 
 /*
  * Also you can this types:

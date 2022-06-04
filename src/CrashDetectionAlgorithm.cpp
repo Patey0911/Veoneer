@@ -21,7 +21,7 @@ void CrashDetectionAlgorithm_MainFunction()
     //Serial.println(accX_crash);
     if(millis()-timp1>10000)
     {
-    if(accX_crash>0.9)
+    if(accX_crash>0.6)
     {
         timp1=millis();
         crash_type=(unsigned char*)malloc(12);
@@ -102,14 +102,21 @@ void CrashDetectionAlgorithm_MainFunction()
     }
 }
 
-void CrashDetectionAlgorithm_GetCrashType(unsigned char* crash_type_p)
+// void CrashDetectionAlgorithm_GetCrashType(unsigned char* crash_type_p)
+// {
+//     crash_type_p=crash_type;
+// }
+
+unsigned char* CrashDetectionAlgorithm_GetCrashType(unsigned char* crash_type_p)
 {
     crash_type_p=crash_type;
+    return crash_type_p;
 }
 
-void CrashDetectionAlgorithm_GetCrashSeverity(unsigned char *crash_severity_p)
+unsigned char* CrashDetectionAlgorithm_GetCrashSeverity(unsigned char *crash_severity_p)
 {
     crash_severity_p=crash_severity;
+    return crash_severity_p;
 }
 
 int returnSTATUS()
