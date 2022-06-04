@@ -10,5 +10,4 @@ void CrashReactionManager_MainFunction()
     CrashDetectionAlgorithm_GetCrashSeverity(crash_react_severity);
     //Serial.println((char*)crash_react_type);
     //Serial.println((char*)crash_react_severity);
-
 }

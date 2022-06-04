@@ -14,7 +14,6 @@ void CrashDetectionAlgorithm_Init()
     ISCRASH=0;
 }
 
-
 void CrashDetectionAlgorithm_MainFunction()
 {
     unsigned long int k = 0;
@@ -22,7 +21,7 @@ void CrashDetectionAlgorithm_MainFunction()
     //Serial.println(accX_crash);
     if(millis()-timp1>10000)
     {
-    if(accX_crash>0.6)
+    if(accX_crash>0.9)
     {
         timp1=millis();
         crash_type=(unsigned char*)malloc(12);

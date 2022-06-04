@@ -11,10 +11,10 @@ unsigned long int timer = 0;
 
 void CrashDataRecorder_MainFunction(){
 
-    /*float valoare;
+    float valoare;
     int i;
     int cnt=1, cnt_write=0;
-    if(returnSTATUS()==false)
+    if(returnSTATUS()==0)
     {
 
     if(millis() - timer > 250){
@@ -37,15 +37,15 @@ void CrashDataRecorder_MainFunction(){
         for(int i=0;i<4;i++)
         {
             Serial.println(accx_a[i]);
-            EEPROM.put(cnt,accx_a[i]);
+            //EEPROM.put(cnt,accx_a[i]);
             cnt+=sizeof(float);
 
             Serial.println(accy_a[i]);
-            EEPROM.put(cnt,accy_a[i]);
+            //EEPROM.put(cnt,accy_a[i]);
             cnt+=sizeof(float);
 
             Serial.println(accz_a[i]);
-            EEPROM.put(cnt,accy_a[i]);
+            //EEPROM.put(cnt,accy_a[i]);
             cnt+=sizeof(float);
 
             Serial.println();
@@ -53,15 +53,15 @@ void CrashDataRecorder_MainFunction(){
             MPU6500Driver_GetAccelerationData(&accx_d, &accy_d, &accz_d);
 
             Serial.println(accx_d);
-            EEPROM.put(cnt,accx_d);
+            //EEPROM.put(cnt,accx_d);
             cnt+=sizeof(float);
             
             Serial.println(accy_d);
-            EEPROM.put(cnt,accy_d);
+            //EEPROM.put(cnt,accy_d);
             cnt+=sizeof(float);
 
             Serial.println(accz_d);
-            EEPROM.put(cnt,accz_d);
+            //EEPROM.put(cnt,accz_d);
             cnt+=sizeof(float);
             Serial.println();
 
@@ -69,19 +69,19 @@ void CrashDataRecorder_MainFunction(){
         {
         if(millis() - timer > 250)
         {
-            Just_Update();
+            //Just_Update();
             MPU6500Driver_GetAccelerationData(&accx_d, &accy_d, &accz_d);
 
             Serial.println(accx_d);
-            EEPROM.put(cnt,accx_d);
+            //EEPROM.put(cnt,accx_d);
             cnt+=sizeof(float);
 
             Serial.println(accy_d);
-            EEPROM.put(cnt,accy_d);
+            //EEPROM.put(cnt,accy_d);
             cnt+=sizeof(float);
 
             Serial.println(accz_d);    
-            EEPROM.put(cnt,accz_d);
+            //EEPROM.put(cnt,accz_d);
             cnt+=sizeof(float);
             Serial.println();
 
@@ -95,6 +95,7 @@ void CrashDataRecorder_MainFunction(){
         Serial.println();
         Serial.println();
 
+        /*
         i=1;
         cnt_write=0;
         Serial.println(i);
@@ -110,6 +111,7 @@ void CrashDataRecorder_MainFunction(){
                 Serial.println();
             }
         }
+        */
     }
-    */
+    
 }

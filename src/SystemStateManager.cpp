@@ -1,5 +1,5 @@
 #include "SystemStateManager.h"
-char *actual_state=(char*)malloc(1);
+char *actual_state=(char*)malloc(2);
 void SystemStateManager_init()
 {
     memcpy(actual_state,"0",1);
@@ -9,7 +9,7 @@ void SystemStateManager_init()
 void SystemStateManager_GetSystemState(char *actual_state_p)
 {
     memcpy(actual_state_p,actual_state,1);
-    Serial.println(*actual_state_p);
+    // Serial.println(*actual_state_p);
     if(strcmp(actual_state_p,"1")==1)
     {
         Serial.println(*actual_state_p);
