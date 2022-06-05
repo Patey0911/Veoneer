@@ -1,5 +1,7 @@
 #include <MPU6050_light.h>
 
+extern unsigned long timer;
+
 void MPU6500Driver_Init();
 
 void MPU6500Driver_MainFunction();
@@ -16,9 +18,17 @@ boolean MPU6500Driver_IsProveoutComplete();
 
 boolean MPU6500Driver_GetAngularAccelerationData(float*, float*);
 
-float return_accx();
+void MPUDriver_update();
 
-float return_accy();
+extern MPU6050 mpu;
 
-void Just_Update();
+
+
+
+
+
+
+
+
+
 

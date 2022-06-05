@@ -144,3 +144,8 @@ void MPU6500Driver_MainFunction(){
   // Serial.println(acc_angleY);
   
 }
+
+void MPUDriver_update(){
+
+  mpu.update();
+}

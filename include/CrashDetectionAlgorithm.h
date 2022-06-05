@@ -13,3 +13,5 @@ int returnSTATUS();
 void setSTATUS();
 
 extern int ISCRASH;
+
+extern unsigned char* crash_type;

@@ -9,7 +9,6 @@
 int nr;
 SoftwareSerial sim(GSM_RX, GSM_TX);  //
 
-
 String number = "+40725661830"; 
 //String number = "+40765597414"; 
 String SMS = "";
@@ -72,9 +71,6 @@ void GsmDriver_TriggerSmsTransmission()
    
 }
 
-
-   
- 
 void GsmDriver_MainFunction(){
 
     GsmDriver_TriggerSmsTransmission();

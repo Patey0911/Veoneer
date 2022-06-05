@@ -2,8 +2,8 @@
 #include "MPU6500Driver.h"
 
 float accX_crash, accY_crash, accZ_crash;
-unsigned char* crash_type=NULL;
-unsigned char* crash_severity=NULL;
+unsigned char* crash_type = NULL;
+unsigned char* crash_severity = NULL;
 unsigned long int timp1=0,timp2=0;
 int ISCRASH=0;
 

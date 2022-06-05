@@ -4,6 +4,7 @@
 #include "CrashReactionManager.h"
 #include "SystemStateManager.h"
 #include "GsmDriver.h"
+#include "CrashDataRecorder.h"
 
 unsigned long int timerTK2 = 0, timerTK1 = 0, timerTK3 = 0; //order of priorities
 
@@ -18,9 +19,12 @@ void TK_1(){
   
 }
 
-void TK_3(){
+void TK_3(){  //1000
+
+    CrashDataRecorder_MainFunction();
 
 }
+
 
 void TK_INIT(){     //used in setup()
 
@@ -28,15 +32,17 @@ void TK_INIT(){     //used in setup()
     SystemStateManager_init();
     CrashDetectionAlgorithm_Init();
     GsmDriver_Init();
+    CrashReactionManager_Init();
 }
 
-void TK_2(){
+void TK_2(){  //500 
 
     //digitalWrite(A0, 1);  //digitalWrite for saleae
     MPU6500Driver_MainFunction();
     //digitalWrite(A0, 0);
     CrashDetectionAlgorithm_MainFunction();
     CrashReactionManager_MainFunction();
+
 }
 
 void MainTaskScheduler(void){   //used in loop()
